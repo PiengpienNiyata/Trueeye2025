@@ -58,6 +58,16 @@ const routes = [
     name: 'login',
     component: LoginView,
   },
+  {
+    path: '/credit',
+    name: 'credit',
+    component: LoginView,
+  },
+  {
+    path: '/summarize',
+    name: 'summarize',
+    component: LoginView,
+  },
 ];
 
 const router = createRouter({

@@ -96,7 +96,11 @@
                 </svg>
                 <p class="pt-1">ATTRIBUTE</p>
               </button> -->
-              <button
+
+
+
+             <!-- dashboard disable -->
+              <!-- <button
                 class="pl-4 gap-2 flex w-full items-center h-[50px] text-[#a4a4a4]"
                 :class="
                   currentRoute.includes('dashboard')
@@ -127,9 +131,11 @@
                   </g>
                 </svg>
                 <p class="pt-1">DASHBOARD</p>
-              </button>
+              </button> -->
 
-               <button
+
+<!-- Testing disable -->
+               <!-- <button
                 class="pl-4 gap-2 flex w-full items-center h-[50px] text-[#a4a4a4]"
                 :class="
                   currentRoute.includes('testing')
@@ -154,7 +160,7 @@
                   />
                 </svg>
                 <p class="pt-1">TESTING</p>
-              </button>
+              </button> -->
 
 
 

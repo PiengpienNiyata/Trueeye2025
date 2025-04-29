@@ -133,6 +133,8 @@ import AddMemberModal from "./AddMemberModal.vue";
 import DeleteMemberModal from "./DeleteMemberModal.vue";
 import MoveSiteModal from "./MoveSiteModal.vue";
 import { useRoute, useRouter } from "vue-router";
+import { fetchAccessToken } from '@/service/service.js';
+
 const router = useRouter();
 const route = useRoute();
 
@@ -227,28 +229,6 @@ const chooseAll = () => {
 
 const isUserSelected = (user) =>
   compState.selectedUsers.some((u) => u.id === user.id);
-
-const fetchAccessToken = async () => {
-  const response = await fetch(
-    "https://id.trueeye.co/realms/master/protocol/openid-connect/token",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        username: "trueeye_admin",
-        password: "trueeye_adminpwd",
-        client_id: "TRUEEYE_SERVICE",
-        grant_type: "password",
-        client_secret: "VA3GHImiEK8wzEpwmFg2ixuzfRFDwU7C",
-        scope: "openid",
-      }),
-      redirect: "follow",
-    }
-  );
-  const { access_token } = await response.json();
-  if (!access_token) throw new Error("Access token not found in the response.");
-  return `Bearer ${access_token}`;
-};
 
 const fetchAllDetails = async (accessToken) => {
   const siteId = route.params.id;
