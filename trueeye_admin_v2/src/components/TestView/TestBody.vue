@@ -8,7 +8,7 @@
     </MainBody>
 </template>
 <script setup>
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import TestCenter from "./TestMain.vue";
 
 </script>

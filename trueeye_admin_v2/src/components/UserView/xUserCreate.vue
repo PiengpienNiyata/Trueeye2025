@@ -130,7 +130,7 @@ import { onMounted, reactive } from "vue";
 import SetPasswordModal from "./SetPasswordModal.vue";
 import JoinSitesModal from "./JoinSitesModal.vue";
 import SaveUserModal from "./SaveUserModal.vue";
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import { sites } from "../../utility/data.js";
 
 onMounted(() => {

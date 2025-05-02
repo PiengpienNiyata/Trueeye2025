@@ -150,7 +150,7 @@ import SetPasswordModal from "./SetPasswordModal.vue";
 import JoinSitesModal from "./JoinSitesModal.vue";
 import SaveUserModal from "./SaveUserModal.vue";
 import ErrorUserModal from "./ErrorUserModal.vue";
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import { useRoute } from "vue-router";
 
 // import { store } from "../../utility/store.js";

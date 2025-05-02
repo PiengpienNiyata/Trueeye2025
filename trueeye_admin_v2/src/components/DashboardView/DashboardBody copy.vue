@@ -17,7 +17,7 @@
     </MainBody>
 </template>
 <script setup>
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import HeadComp from "./HeadComp.vue";
 import CompareHospital from "./CompareHospital.vue";
 import CompareYearChart from "./CompareYearChart.vue";

@@ -7,6 +7,8 @@ import AttributeView from '../components/AttributeView/AttributeBody.vue';
 import LoginView from '../components/LoginView/LoginBody.vue';
 import DashboardView from '@/components/DashboardView/DashboardBody.vue';
 import TestingView from '@/components/TestView/TestBody.vue';
+import CreditView from '@/components/CreditView/CreditBody.vue';
+import SummarizeView from '@/components/SummarizeView/SummarizeBody.vue';
 
 const routes = [
   {
@@ -61,12 +63,12 @@ const routes = [
   {
     path: '/credit',
     name: 'credit',
-    component: LoginView,
+    component: CreditView,
   },
   {
     path: '/summarize',
     name: 'summarize',
-    component: LoginView,
+    component: SummarizeView,
   },
 ];
 

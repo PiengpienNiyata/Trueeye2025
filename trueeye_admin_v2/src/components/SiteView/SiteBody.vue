@@ -149,7 +149,7 @@
 
 <script setup>
 import { onMounted, reactive } from "vue";
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import MemberModal from "./MemberComp.vue";
 import CameraModal from "./CameraComp.vue";
 import AttributeModal from "./AttributeComp.vue";

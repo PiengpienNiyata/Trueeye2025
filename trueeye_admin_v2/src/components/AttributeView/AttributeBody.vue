@@ -40,7 +40,7 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 
-import MainBody from "../MainBody.vue";
+import MainBody from "@/components/MainBody.vue";
 import AttriListModal from "./AttriListComp.vue";
 import AttriSetModal from "./AttriSetComp.vue";
 

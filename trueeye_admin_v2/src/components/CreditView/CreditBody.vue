@@ -1,6 +1,10 @@
 <template>
   <MainBody>
-    <template v-slot:maincomponent>
+    <div class="row">
+      <StatusBar />
+    </div>
+
+    <!-- <template v-slot:maincomponent>
       <div class="p-6 h-full flex flex-col">
         <p class="text-2xl/6 text-[#a4a4a4]">Accounts</p>
         <div class="pt-4 flex gap-4">
@@ -54,39 +58,7 @@
           </button>
         </div>
         <div class="py-4 flex items-center justify-end gap-1 text-[#A4A4A4]">
-          <!-- <button @click="previousPage" :disabled="compState.currentPage <= 1">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.71 15.8805L10.83 12.0005L14.71 8.12047C15.1 7.73047 15.1 7.10047 14.71 6.71047C14.32 6.32047 13.69 6.32047 13.3 6.71047L8.70998 11.3005C8.31998 11.6905 8.31998 12.3205 8.70998 12.7105L13.3 17.3005C13.69 17.6905 14.32 17.6905 14.71 17.3005C15.09 16.9105 15.1 16.2705 14.71 15.8805Z"
-                fill="#A4A4A4"
-              />
-            </svg>
-          </button>
-          <p>1-30 of 1111</p>
-          <button
-            @click="nextPage"
-            :disabled="compState.currentPage >= totalPages"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9.29006 15.8805L13.1701 12.0005L9.29006 8.12047C8.90006 7.73047 8.90006 7.10047 9.29006 6.71047C9.68006 6.32047 10.3101 6.32047 10.7001 6.71047L15.2901 11.3005C15.6801 11.6905 15.6801 12.3205 15.2901 12.7105L10.7001 17.3005C10.3101 17.6905 9.68006 17.6905 9.29006 17.3005C8.91006 16.9105 8.90006 16.2705 9.29006 15.8805Z"
-                fill="#A4A4A4"
-              />
-            </svg>
-          </button> -->
-        </div>
+                </div>
 
         <div
           class="col-span-10 inline-block rounded-lg overflow-y-scroll flex-grow"
@@ -160,171 +132,171 @@
           @confirm="deleteUser"
         />
       </transition>
-    </template>
+    </template> -->
   </MainBody>
 </template>
 
 <script setup>
-import { onMounted, reactive, computed } from "vue";
-import { useRouter } from "vue-router";
-import { fetchAccessToken } from '@/service/service.js';
+// import { onMounted, reactive, computed } from "vue";
+// import { useRouter } from "vue-router";
+// import { fetchAccessToken } from '@/service/service.js';
 
-const router = useRouter();
-// import { useRouter } from 'vue-router;
-import DeleteUserModal from "./DeleteUserModal";
+// const router = useRouter();
+// // import { useRouter } from 'vue-router;
+// import DeleteUserModal from "./DeleteUserModal";
 import MainBody from "@/components/MainBody.vue";
 
-// const router = useRouter()
-const compState = reactive({
-  isDeleteUserModal: false,
-  searchQuery: "",
-  currentPage: "",
-  users: [],
-  selectedUsers: [],
-});
+// // const router = useRouter()
+// const compState = reactive({
+//   isDeleteUserModal: false,
+//   searchQuery: "",
+//   currentPage: "",
+//   users: [],
+//   selectedUsers: [],
+// });
 
-onMounted(() => {
-  checkLogin();
-  run();
-});
+// onMounted(() => {
+//   checkLogin();
+//   run();
+// });
 
-const onDeleteClick = () => {
-  compState.isDeleteUserModal = true;
-};
+// const onDeleteClick = () => {
+//   compState.isDeleteUserModal = true;
+// };
 
-const onCloseDeleteUserModal = () => {
-  compState.isDeleteUserModal = false;
-};
+// const onCloseDeleteUserModal = () => {
+//   compState.isDeleteUserModal = false;
+// };
 
-const filteredUsers = computed(() => {
-  const searchTerm = compState.searchQuery.toString().toLowerCase();
-  return compState.users.filter((item) =>
-    Object.values(item).some((value) =>
-      value.toString().toLowerCase().includes(searchTerm)
-    )
-  );
-});
+// const filteredUsers = computed(() => {
+//   const searchTerm = compState.searchQuery.toString().toLowerCase();
+//   return compState.users.filter((item) =>
+//     Object.values(item).some((value) =>
+//       value.toString().toLowerCase().includes(searchTerm)
+//     )
+//   );
+// });
 
-const run = async () => {
-  try {
-    const accessToken = await fetchAccessToken();
-    await fetchAllDetails(accessToken);
-  } catch (error) {
-    console.error("Error in main function:", error);
-  }
-};
+// const run = async () => {
+//   try {
+//     const accessToken = await fetchAccessToken();
+//     await fetchAllDetails(accessToken);
+//   } catch (error) {
+//     console.error("Error in main function:", error);
+//   }
+// };
 
-const deleteUser = async () => {
-  try {
-    const accessToken = await fetchAccessToken();
-    await deleteUsers(accessToken);
-  } catch (error) {
-    console.error("Error in main function:", error);
-  }
-  compState.isDeleteUserModal = false;
-  location.reload();
-};
+// const deleteUser = async () => {
+//   try {
+//     const accessToken = await fetchAccessToken();
+//     await deleteUsers(accessToken);
+//   } catch (error) {
+//     console.error("Error in main function:", error);
+//   }
+//   compState.isDeleteUserModal = false;
+//   location.reload();
+// };
 
-const fetchAllDetails = async (accessToken) => {
-  const headers = new Headers();
-  headers.append("Authorization", accessToken);
+// const fetchAllDetails = async (accessToken) => {
+//   const headers = new Headers();
+//   headers.append("Authorization", accessToken);
 
-  const requestOptions = {
-    method: "GET",
-    headers: headers,
-    redirect: "follow",
-  };
+//   const requestOptions = {
+//     method: "GET",
+//     headers: headers,
+//     redirect: "follow",
+//   };
 
-  try {
-    const response = await fetch(
-      "https://id.trueeye.co/admin/realms/master/users/",
-      requestOptions
-    );
-    const result = await response.json();
-    if (Array.isArray(result)) {
-      const userDetails = result.map((user) => ({
-        id: user.id,
-        name: user.username,
-        email: user.email || "",
-      }));
-      compState.users = userDetails;
+//   try {
+//     const response = await fetch(
+//       "https://id.trueeye.co/admin/realms/master/users/",
+//       requestOptions
+//     );
+//     const result = await response.json();
+//     if (Array.isArray(result)) {
+//       const userDetails = result.map((user) => ({
+//         id: user.id,
+//         name: user.username,
+//         email: user.email || "",
+//       }));
+//       compState.users = userDetails;
       
-    }
-  } catch (error) {
-    console.error("Error fetching details:", error);
-  }
-};
+//     }
+//   } catch (error) {
+//     console.error("Error fetching details:", error);
+//   }
+// };
 
-const deleteUsers = async (accessToken) => {
-  const myHeaders = new Headers();
-  myHeaders.append("Authorization", accessToken);
+// const deleteUsers = async (accessToken) => {
+//   const myHeaders = new Headers();
+//   myHeaders.append("Authorization", accessToken);
 
-  const requestOptions = {
-    method: "DELETE",
-    headers: myHeaders,
-    redirect: "follow",
-  };
+//   const requestOptions = {
+//     method: "DELETE",
+//     headers: myHeaders,
+//     redirect: "follow",
+//   };
 
-  for (let user of compState.selectedUsers) {
-    const userId = user.id;
-    try {
-      const response = await fetch(
-        `https://id.trueeye.co/admin/realms/master/users/${userId}`,
-        requestOptions
-      );
-      if (response.ok) {
-        console.log(`Deleted user with ID: ${userId}`);
-      } else {
-        console.error(
-          `Failed to delete user with ID: ${userId}`,
-          response.statusText
-        );
-      }
-    } catch (error) {
-      console.error(`Error deleting user with ID: ${userId}`, error);
-    }
-  }
-};
+//   for (let user of compState.selectedUsers) {
+//     const userId = user.id;
+//     try {
+//       const response = await fetch(
+//         `https://id.trueeye.co/admin/realms/master/users/${userId}`,
+//         requestOptions
+//       );
+//       if (response.ok) {
+//         console.log(`Deleted user with ID: ${userId}`);
+//       } else {
+//         console.error(
+//           `Failed to delete user with ID: ${userId}`,
+//           response.statusText
+//         );
+//       }
+//     } catch (error) {
+//       console.error(`Error deleting user with ID: ${userId}`, error);
+//     }
+//   }
+// };
 
-const isAllSelected = computed(
-  () => compState.selectedUsers.length === compState.users.length
-);
+// const isAllSelected = computed(
+//   () => compState.selectedUsers.length === compState.users.length
+// );
 
-const choose = (user) => {
-  const index = compState.selectedUsers.findIndex((u) => u.id === user.id);
-  if (index === -1) {
-    compState.selectedUsers.push({ id: user.id, name: user.name });
-  } else {
-    compState.selectedUsers.splice(index, 1);
-  }
-};
+// const choose = (user) => {
+//   const index = compState.selectedUsers.findIndex((u) => u.id === user.id);
+//   if (index === -1) {
+//     compState.selectedUsers.push({ id: user.id, name: user.name });
+//   } else {
+//     compState.selectedUsers.splice(index, 1);
+//   }
+// };
 
-const chooseAll = () => {
-  if (isAllSelected.value) {
-    compState.selectedUsers = [];
-  } else {
-    compState.selectedUsers = compState.users.map((user) => ({
-      id: user.id,
-      name: user.name,
-    }));
-  }
-};
+// const chooseAll = () => {
+//   if (isAllSelected.value) {
+//     compState.selectedUsers = [];
+//   } else {
+//     compState.selectedUsers = compState.users.map((user) => ({
+//       id: user.id,
+//       name: user.name,
+//     }));
+//   }
+// };
 
-const isUserSelected = (user) =>
-  compState.selectedUsers.some((u) => u.id === user.id);
+// const isUserSelected = (user) =>
+//   compState.selectedUsers.some((u) => u.id === user.id);
 
-const navigateTo = (path) => {
-  router.push(path);
-};
-const checkLogin = () => {
-  const token = sessionStorage.getItem("token");
-  if (!token) {
-    navigateTo("/login");
-  }
-};
-const onAddclick = () => {
-  router.push({ name: "usercreate" });
-};
+// const navigateTo = (path) => {
+//   router.push(path);
+// };
+// const checkLogin = () => {
+//   const token = sessionStorage.getItem("token");
+//   if (!token) {
+//     navigateTo("/login");
+//   }
+// };
+// const onAddclick = () => {
+//   router.push({ name: "usercreate" });
+// };
 </script>
 
 <style scoped>

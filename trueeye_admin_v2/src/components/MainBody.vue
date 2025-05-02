@@ -70,15 +70,15 @@
 
                 <p class="pt-1">SITES</p>
               </button>
-              <!-- <button
+              <button
                 class="pl-4 gap-2 flex w-full items-center h-[50px] text-[#a4a4a4]"
                 :class="
-                  currentRoute.includes('attribute')
+                  currentRoute.includes('credit')
                     ? 'bg-[#EB4648] text-white'
                     : ''
                 "
-                @click="navigateTo('/attribute')"
-                title="Attribute"
+                @click="navigateTo('/credit')"
+                title="Credit"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -88,16 +88,41 @@
                   fill="none"
                 >
                   <path
-                    d="M22.756 10H9.244C6.352 10 4 12.688 4 16C4 19.312 6.352 22 9.244 22H22.756C25.648 22 28 19.312 28 16C28 12.688 25.648 10 22.756 10ZM14.932 14.32L10.72 18.532C10.6 18.652 10.444 18.712 10.3 18.712C10.156 18.712 9.988 18.652 9.88 18.532L7.648 16.3C7.408 16.06 7.408 15.688 7.648 15.448C7.888 15.208 8.26 15.208 8.5 15.448L10.312 17.26L14.104 13.468C14.344 13.228 14.716 13.228 14.956 13.468C15.196 13.708 15.16 14.08 14.932 14.32Z"
-                    :fill="
-                      !currentRoute.includes('attribute') ? '#EB4648' : 'white'
+                  d="M4 4h16a2 2 0 012 2v2H6a2 2 0 00-2 2v8h16v-2a1 1 0 112 0v2a4 4 0 01-4 4H6a4 4 0 01-4-4V8a4 4 0 014-4zm4 8a1 1 0 100-2 1 1 0 000 2z"
+                  :fill="
+                      !currentRoute.includes('credit') ? '#EB4648' : 'white'
                     "
                   />
                 </svg>
-                <p class="pt-1">ATTRIBUTE</p>
-              </button> -->
+                <p class="pt-1">CREDIT</p>
+              </button>
 
-
+              <button
+                class="pl-4 gap-2 flex w-full items-center h-[50px] text-[#a4a4a4]"
+                :class="
+                  currentRoute.includes('summarize')
+                    ? 'bg-[#EB4648] text-white'
+                    : ''
+                "
+                @click="navigateTo('/summarize')"
+                title="Summarize"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10z"
+                    :fill="
+                      !currentRoute.includes('summarize') ? '#EB4648' : 'white'
+                    "
+                  />
+                </svg>
+                <p class="pt-1">SUMMARIZE</p>
+              </button>
 
              <!-- dashboard disable -->
               <!-- <button
@@ -257,6 +282,10 @@ const compState = reactive({
       ? "DASHBOARD"
       : route.name === "testing"
       ? "TESTING"
+      : route.name === "credit"
+      ? "CREDIT"
+      : route.name === "summarize"
+      ? "SUMMARIZE"
       : "USER",
   userName: sessionStorage.getItem("name"),
   singleUpload: sessionStorage.getItem("single_upload") === "true",
